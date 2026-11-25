@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090914">
+<title>SusAnime — Anime Universe</title>
+<style>
+:root{--bg:#080811;--panel:#11111d;--panel2:#171727;--line:#29283d;--text:#f5f3ff;--muted:#aaa8c2;--purple:#9b6cff;--pink:#ff5ebc;--cyan:#68e1ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0,#241344 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;color:inherit}.wrap{width:min(1240px,94%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#090912eF;backdrop-filter:blur(18px);border-bottom:1px solid #28243c}.nav{height:72px;display:flex;align-items:center;gap:24px}.brand{font-size:25px;font-weight:900;letter-spacing:-1px;background:linear-gradient(90deg,var(--purple),var(--pink));background-clip:text;color:transparent;white-space:nowrap}.brand span{color:white}.navlinks{display:flex;gap:18px;margin-left:auto}.navlinks a{color:#c9c5dc;text-decoration:none;font-size:14px}.navlinks a:hover{color:white}.navbtn{background:#1b192b;border:1px solid var(--line);padding:10px 14px;border-radius:12px}
+.hero{padding:54px 0 28px;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center}.eyebrow{color:#c3a8ff;text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:2px}.hero h1{font-size:clamp(38px,6vw,70px);line-height:.98;letter-spacing:-3px;margin:14px 0}.hero h1 em{font-style:normal;color:var(--pink)}.hero p{color:var(--muted);max-width:570px;line-height:1.7}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.primary{background:linear-gradient(110deg,#8251f5,#d14bba);padding:13px 19px;border-radius:13px;font-weight:800;box-shadow:0 8px 28px #8d46ed33}.secondary{background:#171625;border:1px solid var(--line);padding:13px 19px;border-radius:13px}.hero-art{min-height:270px;border:1px solid #44305f;border-radius:26px;overflow:hidden;position:relative;background:linear-gradient(140deg,#36165f,#14172e 55%,#3b143b);display:flex;align-items:center;justify-content:center}.hero-art:before,.hero-art:after{content:"";position:absolute;border-radius:50%;filter:blur(2px)}.hero-art:before{width:230px;height:230px;background:#a44bff66;right:5%;top:-20%}.hero-art:after{width:160px;height:160px;background:#ff4fa966;left:8%;bottom:-25%}.artword{font-size:clamp(30px,5vw,58px);font-weight:1000;letter-spacing:-3px;text-align:center;z-index:1;text-shadow:0 8px 40px #000}.artword small{display:block;font-size:12px;letter-spacing:5px;color:#d9c9ff;margin-top:10px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.stat{border:1px solid var(--line);background:#12111d;padding:10px 14px;border-radius:12px;color:#c6c2d9;font-size:13px}.stat b{color:white}
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}.searchbox{flex:1;min-width:220px;position:relative}.searchbox input{width:100%;background:#131321;border:1px solid var(--line);color:white;border-radius:14px;padding:15px 16px;outline:none}.searchbox input:focus{border-color:var(--purple)}.filter{background:#131321;border:1px solid var(--line);color:#ddd;border-radius:12px;padding:13px}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:34px 0 16px}.sectionhead h2{margin:0;font-size:25px;letter-spacing:-.6px}.sectionhead p{margin:6px 0 0;color:var(--muted);font-size:13px}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 12px}.tab{white-space:nowrap;background:#171625;border:1px solid var(--line);color:#c6c2d9;padding:9px 14px;border-radius:999px;font-size:13px}.tab.active{background:#7e4be5;color:white;border-color:#9b6cff}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}.card{min-width:0;background:linear-gradient(180deg,#171625,#10101a);border:1px solid #27253a;border-radius:16px;overflow:hidden;transition:transform .2s,border-color .2s;position:relative}.card:hover{transform:translateY(-5px);border-color:#8055ca}.poster{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:linear-gradient(145deg,#392260,#15182c)}.posterfallback{aspect-ratio:3/4;display:grid;place-items:center;background:linear-gradient(145deg,#3b205d,#13182d);font-size:50px}.cardbody{padding:12px}.card h3{font-size:14px;margin:0 0 8px;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:11px;color:#a8a4bc;display:flex;gap:8px;flex-wrap:wrap}.cardbuttons{display:flex;gap:7px;margin-top:12px}.cardbuttons button{flex:1;padding:8px 5px;border-radius:9px;background:#29233c;font-size:12px}.cardbuttons .heart{flex:0 0 35px;background:#241b31;color:#ff8cce;font-size:16px}.badge{position:absolute;top:9px;left:9px;background:#090911c9;border:1px solid #ffffff25;border-radius:8px;padding:5px 8px;font-size:10px;font-weight:800;backdrop-filter:blur(8px)}
+.notice{background:#12111d;border:1px solid var(--line);border-radius:14px;padding:15px;color:var(--muted);font-size:13px;line-height:1.6;margin:18px 0}.empty{grid-column:1/-1;text-align:center;padding:50px 15px;color:var(--muted)}.loadrow{text-align:center;padding:24px}.loadrow button{background:#201832;border:1px solid #4a356c;border-radius:12px;padding:12px 20px}.spinner{display:inline-block;width:22px;height:22px;border:3px solid #38314b;border-top-color:var(--pink);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+footer{border-top:1px solid var(--line);margin-top:55px;padding:28px 0;color:#8f8ba5;font-size:13px;line-height:1.7}.footrow{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;z-index:50;background:#05050bdc;backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modalbox{width:min(760px,100%);max-height:90vh;overflow:auto;background:#141320;border:1px solid #39314f;border-radius:22px;position:relative}.close{position:absolute;right:13px;top:13px;z-index:2;background:#090912cc;border:1px solid #ffffff25;border-radius:10px;width:38px;height:38px;font-size:20px}.detailtop{display:grid;grid-template-columns:180px 1fr;gap:22px;padding:25px}.detailtop img{width:100%;border-radius:13px}.detailtop h2{font-size:27px;margin:10px 0}.detailtop p{color:#c1bdd2;line-height:1.6;font-size:14px}.detailtags{display:flex;gap:7px;flex-wrap:wrap}.detailtags span{background:#272139;border-radius:8px;padding:6px 9px;font-size:11px;color:#d8c9ff}.detailactions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.detailactions button,.detailactions a{padding:11px 14px;border-radius:10px;background:#7546d3;text-decoration:none;color:white;font-size:13px}.detailactions .alt{background:#252237;border:1px solid var(--line)}.modalnote{padding:0 25px 22px;color:#9995ad;font-size:12px;line-height:1.6}
+@media(max-width:950px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{min-height:190px}.navlinks{gap:10px}}
+@media(max-width:650px){.nav{height:60px}.navlinks{display:none}.hero{padding-top:35px}.hero h1{letter-spacing:-1.8px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.sectionhead h2{font-size:21px}.detailtop{grid-template-columns:105px 1fr;gap:14px;padding:18px}.detailtop h2{font-size:20px}.detailtop p{font-size:12px}.detailtags span{font-size:10px}.toolbar{gap:8px}.filter{flex:1}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#"><span>Sus</span>Anime ✦</a>
+<nav class="navlinks"><a href="#home">Home</a><a href="#browse">Browse</a><a href="#popular">Popular</a></nav>
+<button class="navbtn" id="favNav">♡ My List <span id="favCount">0</span></button>
+</div></header>
+<main class="wrap">
+<section class="hero" id="home">
+<div><div class="eyebrow">Your next anime obsession</div><h1>Enter the <em>Anime</em><br>Universe.</h1>
+<p>Discover new worlds, legendary heroes and unforgettable stories. Search, explore and build your personal anime watchlist.</p>
+<div class="hero-actions"><button class="primary" onclick="scrollBrowse()">✦ Explore Anime</button><button class="secondary" onclick="randomAnime()">🎲 Surprise Me</button></div>
+<div class="stats"><div class="stat"><b id="catalogCount">Loading</b> titles to explore</div><div class="stat"><b>Live</b> anime catalog</div><div class="stat"><b>Free</b> discovery</div></div></div>
+<div class="hero-art"><div class="artword">SUSANIME<small>DISCOVER • EXPLORE • REPEAT</small></div></div>
+</section>
+<section id="browse">
+<div class="sectionhead"><div><h2>Find your anime</h2><p>Search the catalog or narrow it down by genre.</p></div></div>
+<div class="toolbar"><div class="searchbox"><input id="search" type="search" placeholder="Search anime titles..." autocomplete="off"></div>
+<select id="sort" class="filter"><option value="popular">Popular</option><option value="score">Highest rated</option><option value="title">A–Z</option></select>
+<select id="type" class="filter"><option value="all">All formats</option><option value="TV">TV</option><option value="MOVIE">Movies</option><option value="OVA">OVA</option></select></div>
+<div class="tabs" id="genreTabs">
+<button class="tab active" data-genre="ALL">All Anime</button><button class="tab" data-genre="Action">Action</button><button class="tab" data-genre="Adventure">Adventure</button><button class="tab" data-genre="Comedy">Comedy</button><button class="tab" data-genre="Drama">Drama</button><button class="tab" data-genre="Fantasy">Fantasy</button><button class="tab" data-genre="Romance">Romance</button><button class="tab" data-genre="Sci-Fi">Sci-Fi</button><button class="tab" data-genre="Thriller">Thriller</button>
+</div>
+<div class="grid" id="animeGrid"><div class="empty"><span class="spinner"></span><p>Loading anime universe…</p></div></div>
+<div class="loadrow"><button id="loadMore">Load more anime ↓</button></div>
+</section>
+<section id="popular"><div class="sectionhead"><div><h2>Top picks</h2><p>Popular titles from the live catalog.</p></div></div><div class="notice">Tip: Tap any anime card to view its synopsis, genres, rating and official-platform search options. Use the ♡ button to save it to your personal list on this device.</div></section>
+</main>
+<footer><div class="wrap footrow"><div><b class="brand">SusAnime ✦</b><br>Anime discovery, made for fans.</div><div>Independent fan-made catalog interface.<br>Anime artwork and metadata are provided by AniList and belong to their respective owners.</div></div></footer>
+<div class="modal" id="detailModal" role="dialog" aria-modal="true"><div class="modalbox"><button class="close" id="closeModal" aria-label="Close">×</button><div id="detailContent"></div></div></div>
+<script>
+const API="https://graphql.anilist.co";
+let anime=[],shown=0,page=1,genre="ALL",favorites=new Set(JSON.parse(localStorage.getItem("susAnimeFavorites")||"[]")),current=null;
+const grid=document.getElementById("animeGrid"),search=document.getElementById("search");
+const query=`query ($page:Int,$perPage:Int){Page(page:$page,perPage:$perPage){pageInfo{hasNextPage}media(type:ANIME,sort:POPULARITY_DESC,isAdult:false){id title{romaji english native} coverImage{large} bannerImage description(asHtml:false) genres averageScore popularity episodes format seasonYear status}}}`;
+async function getCatalog(nextPage=1){
+ grid.innerHTML=nextPage===1?'<div class="empty"><span class="spinner"></span><p>Fetching anime catalog…</p></div>':grid.innerHTML;
+ try{
+ const res=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({query,variables:{page:nextPage,perPage:30}})});
+ if(!res.ok)throw Error("catalog");
+ const data=await res.json();const list=data.data.Page.media;
+ anime=nextPage===1?list:anime.concat(list);page=nextPage;
+ document.getElementById("catalogCount").textContent=anime.length+"+";
+ render();
+ }catch(e){if(!anime.length)grid.innerHTML='<div class="empty">Could not load the live catalog right now. Check your internet connection and refresh the page.</div>'}
+}
+function clean(s=""){return s.replace(/<[^>]*>/g," ").replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/\s+/g," ").trim()}
+function title(a){return a.title.english||a.title.romaji||a.title.native||"Untitled Anime"}
+function saved(){localStorage.setItem("susAnimeFavorites",JSON.stringify([...favorites]));document.getElementById("favCount").textContent=favorites.size}
+function filtered(){
+ let q=search.value.toLowerCase().trim(),fmt=document.getElementById("type").value,sort=document.getElementById("sort").value;
+ let list=anime.filter(a=>(title(a)+" "+(a.title.romaji||"")+" "+a.genres.join(" ")).toLowerCase().includes(q)&&(genre==="ALL"||a.genres.includes(genre))&&(fmt==="all"||a.format===fmt));
+ if(sort==="score")list.sort((a,b)=>(b.averageScore||0)-(a.averageScore||0));if(sort==="title")list.sort((a,b)=>title(a).localeCompare(title(b)));
+ return list;
+}
+function render(){
+ let list=filtered();grid.innerHTML="";
+ if(!list.length){grid.innerHTML='<div class="empty">No titles found. Try another search or genre.</div>';return}
+ list.forEach((a,i)=>{
+ let card=document.createElement("article");card.className="card";
+ card.innerHTML=`<span class="badge">${a.averageScore? "★ "+(a.averageScore/10).toFixed(1):"ANIME"}</span><img class="poster" loading="lazy" src="${a.coverImage.large}" alt="${title(a)} poster"><div class="cardbody"><h3 title="${title(a)}">${title(a)}</h3><div class="meta"><span>${a.format||"Anime"}</span><span>${a.seasonYear||"—"}</span><span>${a.episodes||"?"} eps</span></div><div class="cardbuttons"><button data-detail="${a.id}">Details</button><button class="heart" data-fav="${a.id}" aria-label="Save anime">${favorites.has(a.id)?"♥":"♡"}</button></div></div>`;
+ grid.appendChild(card);
+ });
+}
+grid.addEventListener("click",e=>{let d=e.target.closest("[data-detail]"),f=e.target.closest("[data-fav]");if(d)openDetail(+d.dataset.detail);if(f)toggleFav(+f.dataset.fav)});
+function toggleFav(id){favorites.has(id)?favorites.delete(id):favorites.add(id);saved();render()}
+function openDetail(id){
+ current=anime.find(a=>a.id===id);if(!current)return;
+ const a=current;document.getElementById("detailContent").innerHTML=`<div class="detailtop"><img src="${a.coverImage.large}" alt=""><div><div class="eyebrow">${a.format||"ANIME"} · ${a.seasonYear||"Unknown year"}</div><h2>${title(a)}</h2><div class="detailtags">${a.genres.map(g=>`<span>${g}</span>`).join("")}</div><p>${clean(a.description)||"Synopsis is not available in the catalog."}</p><div class="meta">★ ${a.averageScore?(a.averageScore/10).toFixed(1):"Unrated"} · ${a.episodes||"?"} episodes · ${a.status||"Unknown"}</div><div class="detailactions"><button onclick="toggleFav(${a.id});openDetail(${a.id})">${favorites.has(a.id)?"♥ Saved":"♡ Add to My List"}</button><a class="alt" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent(title(a)+" official streaming platform India")}">Find official streaming</a></div></div></div><div class="modalnote">SusAnime provides discovery and metadata only. Streaming availability, language tracks (including Hindi/English dub), and episode access depend on licensed services in your region.</div>`;
+ document.getElementById("detailModal").classList.add("show");
+}
+function randomAnime(){if(!anime.length)return;openDetail(anime[Math.floor(Math.random()*anime.length)].id)}
+function scrollBrowse(){document.getElementById("browse").scrollIntoView({behavior:"smooth"})}
+document.getElementById("closeModal").onclick=()=>document.getElementById("detailModal").classList.remove("show");
+document.getElementById("detailModal").addEventListener("click",e=>{if(e.target.id==="detailModal")e.currentTarget.classList.remove("show")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("detailModal").classList.remove("show")});
+document.getElementById("genreTabs").addEventListener("click",e=>{let b=e.target.closest("[data-genre]");if(!b)return;genre=b.dataset.genre;document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t===b));render()});
+search.addEventListener("input",render);document.getElementById("sort").addEventListener("change",render);document.getElementById("type").addEventListener("change",render);
+document.getElementById("loadMore").onclick=()=>getCatalog(page+1);
+document.getElementById("favNav").onclick=()=>{let ids=[...favorites];if(!ids.length){alert("Your list is empty. Tap ♡ on any anime card to save it!");return}let list=anime.filter(a=>favorites.has(a.id));grid.innerHTML="";list.forEach(a=>{let c=document.createElement("article");c.className="card";c.innerHTML=`<img class="poster" src="${a.coverImage.large}" alt=""><div class="cardbody"><h3>${title(a)}</h3><div class="cardbuttons"><button data-detail="${a.id}">Details</button><button class="heart" data-fav="${a.id}">♥</button></div></div>`;grid.appendChild(c)});document.getElementById("browse").scrollIntoView({behavior:"smooth"});document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))};
+saved();getCatalog();
+</script>
+</body>
+</html>
